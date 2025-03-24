@@ -32,13 +32,15 @@ func DefaultHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 	}
 
 	chatID := update.Message.Chat.ID
-	var text string
+	text := update.Message.Text
+
+	var response string
 
 	switch text {
 	case "/start":
-		text = "Welcome to raskid bot! Use /help to see all commands."
+		response = "Welcome to raskid bot! Use /help to see all commands."
 	case "/help":
-		text = `Type /nades <map> <team> <vector> <type> <usage> <position> to get a video for this nade
+		response = `Type /nades <map> <team> <vector> <type> <usage> <position> to get a video for this nade
 <map> - is the map for which you need your nade (e.g. mirage, inferno, ancient, etc)
 <team> - T or CT?
 <vector> - what is the part of the map where you are going to use your nade (A, Mid or B?)
@@ -48,12 +50,12 @@ func DefaultHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 example of command: "/nades mirage t mid smoke insta window"
 `
 	default:
-		text = "Unknown command. Use /help to see all commands."
+		response = "Unknown command. Use /help to see all commands."
 	}
 
 	_, err := b.SendMessage(ctx, &bot.SendMessageParams{
 		ChatID: chatID,
-		Text:   text,
+		Text:   response,
 	})
 	if err != nil {
 		log.Println(err)
