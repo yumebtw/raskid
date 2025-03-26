@@ -53,7 +53,8 @@ func DefaultHandler(s *db.Storage) func(ctx context.Context, b *bot.Bot, update 
 <class> - nade class (e.g. smoke, flash, molly and he)
 <usage> - the purpose of the nade, e.g. defence(for CTs), execute(for Ts), retake, insta(for smokes), assist(support flash), selfpop(flashes only)
 <position> - the position where you want to use your nade
-example of command: "/nades mirage t mid smoke insta window"`
+example of command: "/nades mirage t mid smoke insta window"
+Type /addnade <map> <team> <vector> <type> <usage> <position> to add a video for this nade`
 		} else if strings.HasPrefix(text, "/nades") {
 			HandleGetNades(s, ctx, b, update)
 		} else if strings.HasPrefix(text, "/addnade") {
