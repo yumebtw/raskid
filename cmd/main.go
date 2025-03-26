@@ -9,8 +9,12 @@ import (
 
 func main() {
 	cfg := config.MustLoad()
-	db.ConnectDB(cfg.Database)
-	_, err := bot.NewTelegramBot(cfg.Bot.Token)
+
+	storage, err := db.ConnectDB(cfg.Database)
+	if err != nil {
+		log.Fatal(err)
+	}
+	_, err = bot.NewTelegramBot(storage, cfg.Bot.Token)
 	if err != nil {
 		log.Fatal(err)
 	}

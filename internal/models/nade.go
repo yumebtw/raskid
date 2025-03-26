@@ -6,9 +6,9 @@ type Nade struct {
 	Team        string `json:"team"`
 	Map         string `json:"map"`
 	Vector      string `json:"vector"`
-	Type        string `json:"type"`
 	Usage       string `json:"usage"`
-	Position    string `json:"position"`
-	VideoLink   string `json:"video_link"`
 	Description string `json:"description"`
+	Link        string `json:"video_link"`
+	Position    string `json:"position"`
+	Class       string `json:"type"`
 }
